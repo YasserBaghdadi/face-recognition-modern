@@ -37,9 +37,9 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/YasserBaghdadi/face_recognition"
+Homepage = "https://github.com/YasserBaghdadi/face-recognition-modern"
 Upstream = "https://github.com/ageitgey/face_recognition"
-Issues = "https://github.com/YasserBaghdadi/face_recognition/issues"
+Issues = "https://github.com/YasserBaghdadi/face-recognition-modern/issues"
 
 [project.scripts]
 face_recognition = "face_recognition.face_recognition_cli:main"
