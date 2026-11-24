@@ -1,2 +1,49 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "face-recognition-modern"
+version = "1.4.0"
+description = "Maintained, drop-in build of face_recognition that installs on modern Python without a compiler"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Adam Geitgey", email = "ageitgey@gmail.com" },
+]
+maintainers = [
+  { name = "Yasser Baghdadi" },
+]
+requires-python = ">=3.10"
+dependencies = [
+  "face_recognition_models>=0.3.0",
+  "dlib-bin>=19.24",
+  "numpy>=1.24",
+  "Pillow>=9.1",
+  "Click>=8.0",
+]
+keywords = ["face_recognition", "face recognition", "dlib", "computer vision"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Scientific/Engineering :: Image Recognition",
+]
+
+[project.urls]
+Homepage = "https://github.com/YasserBaghdadi/face_recognition"
+Upstream = "https://github.com/ageitgey/face_recognition"
+Issues = "https://github.com/YasserBaghdadi/face_recognition/issues"
+
+[project.scripts]
+face_recognition = "face_recognition.face_recognition_cli:main"
+face_detection = "face_recognition.face_detection_cli:main"
+
+[tool.setuptools]
+packages = ["face_recognition"]

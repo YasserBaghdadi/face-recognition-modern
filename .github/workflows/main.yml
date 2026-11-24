@@ -1,24 +1,23 @@
 name: CI
-on: push
+on: [push, pull_request]
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  test:
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        python-version: [3.8, 3.9, "3.10"]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
+    - name: Install (no compiler, no cmake)
       run: |
-        pip install setuptools wheel
-        pip install .
-        pip install tox-gh-actions
-    - name: Check package setup
-      run: python setup.py check
+        python -m pip install --upgrade pip
+        pip install . pytest
+    - name: Import works without pkg_resources
+      run: python -c "import sys; sys.modules['pkg_resources'] = None; import face_recognition; print(face_recognition.__version__)"
     - name: Test
-      run: tox
+      run: python -m pytest -q tests

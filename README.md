@@ -1,4 +1,29 @@
-# Face Recognition
+# Face Recognition (modern build)
+
+> **This is a maintained, drop-in build of [ageitgey/face_recognition](https://github.com/ageitgey/face_recognition)**
+> for current Python. The API and the `import face_recognition` name are unchanged.
+>
+> ```bash
+> pip install face-recognition-modern
+> ```
+>
+> What is different from upstream 1.3.0 (last PyPI release, 2020):
+>
+> * **No compiler, no CMake.** Depends on [`dlib-bin`](https://pypi.org/project/dlib-bin/) prebuilt wheels
+>   (Linux, macOS, Windows; Python 3.10 to 3.14).
+> * **Works with setuptools 82+.** The bundled models are located with `importlib`, so the
+>   `pkg_resources` removal no longer causes the misleading
+>   "Please install `face_recognition_models`" message.
+> * **Real errors instead of `quit()`.** A missing model package raises `ImportError`
+>   with a non-zero exit status, not a silent exit with status 0.
+> * Modern packaging (`pyproject.toml`) and CI on Linux, macOS and Windows.
+>
+> Do not install this next to the original `face_recognition` package; both provide the same module.
+> Fixes are also sent upstream as pull requests. All credit for the library goes to Adam Geitgey
+> (MIT license, see `LICENSE`).
+
+---
+
 
 _You can also read a translated version of this file [in Chinese 简体中文版](https://github.com/ageitgey/face_recognition/blob/master/README_Simplified_Chinese.md) or [in Korean 한국어](https://github.com/ageitgey/face_recognition/blob/master/README_Korean.md) or [in Japanese 日本語](https://github.com/m-i-k-i/face_recognition/blob/master/README_Japanese.md)._
 
